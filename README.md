@@ -20,3 +20,55 @@ The league has 10 weight classes, 5 each for men and women, with a minimum weigh
 
 Design the data model for this client. Use any design tools you like. Save your model as text or a legible image file.
 
+----------
+Entities (headers):
+ - attributes:types
+
+League
+ - id: int
+  => has many events
+ - number_of_events: int
+ => has many weight classes
+
+Event
+ - id: int
+ - venue
+ => has one venue
+ - fights
+ => has many fights
+ - league_id: int
+ => belongs to league
+ - event_date: date
+
+Venue
+ - id: int
+ - capacity
+ - price_per_ticket
+ - event_id: int
+ => belongs to an event
+
+Fight
+ - id: int
+ - event_id: int
+ => belongs to an event
+ - fighter1: fighter_id
+ - fighter2: fighter_id
+ - winner: fighter_id
+ => fight has one winner
+
+Figher
+ - id
+ - name
+ - gender: string
+ => belongs multiple weight classes
+
+Weight class
+ - minimum weight: float
+ - league_id: int
+ => has multiple fighters
+
+Fight-WeightClass Join
+- fighter_id: int
+- weight_class_id: int
+- gender: string
+
